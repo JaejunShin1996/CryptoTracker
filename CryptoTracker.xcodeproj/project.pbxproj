@@ -18,6 +18,7 @@
 		525ADC3A295165A00032C64C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 525ADC39295165A00032C64C /* Preview Assets.xcassets */; };
 		525ADC41295166DE0032C64C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 525ADC40295166DE0032C64C /* Assets.xcassets */; };
 		525ADC4429516A2D0032C64C /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525ADC4329516A2D0032C64C /* ColorExtention.swift */; };
+		525BC81B295E6F8E007D8CDE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525BC81A295E6F8E007D8CDE /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		525ADC39295165A00032C64C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		525ADC40295166DE0032C64C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		525ADC4329516A2D0032C64C /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
+		525BC81A295E6F8E007D8CDE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		52033FC8295C34440032913C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				525BC81A295E6F8E007D8CDE /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				52033FCD295C34B30032913C /* CircleButton.swift in Sources */,
 				525ADC4429516A2D0032C64C /* ColorExtention.swift in Sources */,
 				52033FCB295C34640032913C /* HomeView.swift in Sources */,
+				525BC81B295E6F8E007D8CDE /* HomeViewModel.swift in Sources */,
 				525ADC352951659F0032C64C /* ContentView.swift in Sources */,
 				525ADC332951659F0032C64C /* CryptoTrackerApp.swift in Sources */,
 				521BA799295DFF84003FC31B /* CoinRowView.swift in Sources */,
