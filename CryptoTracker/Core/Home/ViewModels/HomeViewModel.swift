@@ -5,16 +5,25 @@
 //  Created by Jaejun Shin on 30/12/2022.
 //
 
+import Combine
 import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var allCoins: [CoinModel] = []
     @Published var allPortfolios: [CoinModel] = []
 
+    private let dataController = CoinDataController()
+    private var cancellables = Set<AnyCancellable>()
+
     init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.allCoins.append(CoinModel.example)
-            self.allPortfolios.append(CoinModel.example)
-        }
+        addSubcribers()
+    }
+
+    func addSubcribers() {
+        dataController.$allCoins
+            .sink { [weak self] (returnedCoins) in
+                self?.allCoins = returnedCoins
+            }
+            .store(in: &cancellables)
     }
 }
