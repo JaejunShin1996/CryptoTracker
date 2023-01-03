@@ -13,19 +13,24 @@ class CoinImageController {
     @Published var coinImage: UIImage? = nil
     var imageSubscription: AnyCancellable?
 
-    init() {
-        getImage()
+    private let coin: CoinModel
+
+    init(coin: CoinModel) {
+        self.coin = coin
+        getCoinImage()
     }
 
-    private func getImage() {
-        guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h") else { return }
+    private func getCoinImage() {
+        guard let url = URL(string: coin.image) else { return }
 
         imageSubscription = NetworkManager.download(url: url)
-            .decode(type: [CoinModel].self, decoder: JSONDecoder())
+            .tryMap({ (data) -> UIImage? in
+                return UIImage(data: data)
+            })
             .sink(receiveCompletion: NetworkManager.handleCompletion,
-                  receiveValue: { [weak self] (returnedCoins) in
-                self?.allCoins = returnedCoins
-                self?.coinSubscription?.cancel()
+                  receiveValue: { [weak self] (returnedImage) in
+                self?.coinImage = returnedImage
+                self?.imageSubscription?.cancel()
             })
     }
 }

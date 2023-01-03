@@ -61,8 +61,8 @@
 		52033FC5295C34140032913C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				52033FC7295C343B0032913C /* Components */,
 				52033FC6295C34280032913C /* Home */,
+				52033FC7295C343B0032913C /* Components */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -88,8 +88,6 @@
 		52033FC8295C34440032913C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				525BC81A295E6F8E007D8CDE /* HomeViewModel.swift */,
-				52253AB1296052D7008A1F7C /* CoinImageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -98,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				52033FCA295C34640032913C /* HomeView.swift */,
+				525BC81A295E6F8E007D8CDE /* HomeViewModel.swift */,
 				521BA798295DFF84003FC31B /* CoinRowView.swift */,
 			);
 			path = Views;
@@ -141,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				524FBE8E29605586005DFF62 /* CoinImageView.swift */,
+				52253AB1296052D7008A1F7C /* CoinImageViewModel.swift */,
 			);
 			path = CoinImage;
 			sourceTree = "<group>";
