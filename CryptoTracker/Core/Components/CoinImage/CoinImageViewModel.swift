@@ -14,12 +14,12 @@ class CoinImageViewModel: ObservableObject {
     @Published var isLoading: Bool = false
 
     private let coin: CoinModel
-    private let coinImageDataController: CoinImageController
+    private let coinImageDataController: CoinImageDataController
     private var cancellables = Set<AnyCancellable>()
 
     init(coin: CoinModel) {
         self.coin = coin
-        self.coinImageDataController = CoinImageController(coin: coin)
+        self.coinImageDataController = CoinImageDataController(coin: coin)
         self.isLoading = true
         addSubscribers()
     }

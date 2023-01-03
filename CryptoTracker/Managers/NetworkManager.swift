@@ -9,6 +9,14 @@ import Combine
 import Foundation
 
 class NetworkManager {
+    static func download(url: URL) -> AnyPublisher<Data, Error> {
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .default))
+            .tryMap { try handleUrlResponse(output: $0, url: url) }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+
     enum NetworkingError: LocalizedError {
         case badURLResponse(url: URL)
         case unknown
@@ -21,13 +29,6 @@ class NetworkManager {
                 return "Unknown error"
             }
         }
-    }
-    static func download(url: URL) -> AnyPublisher<Data, Error> {
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .default))
-            .tryMap { try handleUrlResponse(output: $0, url: url) }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
     }
 
     static func handleUrlResponse(output: URLSession.DataTaskPublisher.Output, url: URL) throws -> Data {
