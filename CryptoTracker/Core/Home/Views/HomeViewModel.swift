@@ -9,6 +9,8 @@ import Combine
 import Foundation
 
 class HomeViewModel: ObservableObject {
+    @Published var searchText: String = ""
+    
     @Published var allCoins: [CoinModel] = []
     @Published var allPortfolios: [CoinModel] = []
 
@@ -20,7 +22,23 @@ class HomeViewModel: ObservableObject {
     }
 
     func addSubcribers() {
-        dataController.$allCoins
+        // Updates all coins
+        $searchText
+            .combineLatest(dataController.$allCoins)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .map { (text, startingCoins) -> [CoinModel] in
+                guard !text.isEmpty else {
+                    return startingCoins
+                }
+
+                let lowercasedText = text.lowercased()
+
+                return startingCoins.filter { (coin) -> Bool in
+                    return  coin.name.contains(lowercasedText) ||
+                            coin.symbol.contains(lowercasedText) ||
+                            coin.id.contains(lowercasedText)
+                }
+            }
             .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }

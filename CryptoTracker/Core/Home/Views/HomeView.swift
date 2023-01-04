@@ -19,6 +19,8 @@ struct HomeView: View {
             VStack {
                 homeHeader
 
+                SearchBarView(searchText: $vm.searchText)
+
                 columnTitles
 
                 if !showPortfolio {
@@ -39,8 +41,14 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .environmentObject(HomeViewModel())
+        Group {
+            HomeView()
+                .preferredColorScheme(.light)
+
+            HomeView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(HomeViewModel())
     }
 }
 
