@@ -26,7 +26,7 @@ class PortfolioDataController {
         self.getPortfolio()
     }
 
-    // PUBLIC: Public
+    // MARK: Public
 
     func updatePortfolio(coin: CoinModel, amount: Double) {
         if let entity = savedEntities.first(where: { (savedEntity) -> Bool in
@@ -65,17 +65,17 @@ class PortfolioDataController {
         applyChanges()
     }
 
+    private func update(entity: PortfolioEntity, amount: Double) {
+        entity.amount = amount
+        applyChanges()
+    }
+
     private func save() {
         do {
             try container.viewContext.save()
         } catch let error {
             print("Error saving coredata, \(error)")
         }
-    }
-
-    private func update(entity: PortfolioEntity, amount: Double) {
-        entity.amount = amount
-        applyChanges()
     }
 
     private func applyChanges() {

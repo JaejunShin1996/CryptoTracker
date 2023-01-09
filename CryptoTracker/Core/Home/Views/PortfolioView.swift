@@ -119,7 +119,7 @@ extension PortfolioView {
                 Text(getCurrentValue().asCurrencyWith2Decimals())
             }
         }
-        .animation(.none)
+        .animation(.none, value: UUID())
         .padding()
         .font(.headline)
     }

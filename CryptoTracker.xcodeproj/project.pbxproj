@@ -25,6 +25,7 @@
 		525ADC41295166DE0032C64C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 525ADC40295166DE0032C64C /* Assets.xcassets */; };
 		525ADC4429516A2D0032C64C /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525ADC4329516A2D0032C64C /* ColorExtention.swift */; };
 		525BC81B295E6F8E007D8CDE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525BC81A295E6F8E007D8CDE /* HomeViewModel.swift */; };
+		52627B00296BEB51006736DC /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52627AFF296BEB51006736DC /* HapticManager.swift */; };
 		526459D32965581C001E6803 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526459D22965581C001E6803 /* SearchBarView.swift */; };
 		526459D629655E6D001E6803 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526459D529655E6D001E6803 /* UIApplication.swift */; };
 		52984D722966952200FCAA20 /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52984D712966952200FCAA20 /* StatisticModel.swift */; };
@@ -59,6 +60,7 @@
 		525ADC40295166DE0032C64C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		525ADC4329516A2D0032C64C /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		525BC81A295E6F8E007D8CDE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		52627AFF296BEB51006736DC /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		526459D22965581C001E6803 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		526459D529655E6D001E6803 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		52984D712966952200FCAA20 /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				52253AAD296044D6008A1F7C /* NetworkManager.swift */,
 				5211BB232964171500D2E61D /* LocalFileManager.swift */,
+				52627AFF296BEB51006736DC /* HapticManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				525ADC332951659F0032C64C /* CryptoTrackerApp.swift in Sources */,
 				521BA799295DFF84003FC31B /* CoinRowView.swift in Sources */,
 				52033FCF295C39D10032913C /* CircleButtonAnimationView.swift in Sources */,
+				52627B00296BEB51006736DC /* HapticManager.swift in Sources */,
 				521BA79B295E00DC003FC31B /* Double.swift in Sources */,
 				52245724295D38E900689639 /* CoinModel.swift in Sources */,
 				526459D32965581C001E6803 /* SearchBarView.swift in Sources */,
