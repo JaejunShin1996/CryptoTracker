@@ -1,5 +1,5 @@
 //
-//  CoinDeailModel.swift
+//  CoinDetailModel.swift
 //  CryptoTracker
 //
 //  Created by Jaejun Shin on 11/1/2023.
