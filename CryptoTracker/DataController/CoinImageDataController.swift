@@ -27,10 +27,8 @@ class CoinImageDataController {
     private func getCoinImage() {
         if let savedImage = fileManager.getImage(imageName: imageName, folderName: folderName) {
             coinImage = savedImage
-            print("Retrieved from filemanager")
         } else {
             downloadCoinImage()
-            print("Downloading images")
         }
     }
 

@@ -27,7 +27,6 @@ class PortfolioDataController {
     }
 
     // MARK: Public
-
     func updatePortfolio(coin: CoinModel, amount: Double) {
         if let entity = savedEntities.first(where: { (savedEntity) -> Bool in
             return savedEntity.coinID == coin.id
@@ -43,7 +42,6 @@ class PortfolioDataController {
     }
 
     // MARK: Private
-
     private func getPortfolio() {
         let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
         do {

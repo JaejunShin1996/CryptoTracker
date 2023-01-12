@@ -65,14 +65,14 @@ class CoinDetailViewModel: ObservableObject {
         let high = coinModel.high24H.asCurrencyWith6Decimals()
         let highStat = StatisticModel(title: "24h High", value: high)
 
-        let low = "$" + coinModel.low24H.asCurrencyWith6Decimals()
+        let low = coinModel.low24H.asCurrencyWith6Decimals()
         let lowStat = StatisticModel(title: "24h Low", value: low)
 
         let priceChange = coinModel.priceChange24H.asCurrencyWith6Decimals()
         let pricePercentageChange = coinModel.priceChangePercentage24H
         let priceChangeStat = StatisticModel(title: "24h Price Change", value: priceChange, percentageChange: pricePercentageChange)
 
-        let marketCapChange = "$" + coinModel.marketCapChange24H.asCurrencyWith6Decimals()
+        let marketCapChange = coinModel.marketCapChange24H.formattedWithAbbreviations()
         let marketCapPercentageChange = coinModel.marketCapChangePercentage24H
         let marketCapChangeStat = StatisticModel(title: "24h Market Cap Change", value: marketCapChange, percentageChange: marketCapPercentageChange)
 
