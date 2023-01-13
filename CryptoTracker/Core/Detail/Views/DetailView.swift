@@ -21,6 +21,9 @@ struct DetailLoadingView: View {
 
 struct DetailView: View {
     @StateObject private var vm: CoinDetailViewModel
+
+    @State private var showFullDescription = false
+
     private let columns: [GridItem] =
         [GridItem(.flexible()), GridItem(.flexible())]
     private let spacing: CGFloat = 30
@@ -36,14 +39,16 @@ struct DetailView: View {
                     .padding(.vertical)
 
                 VStack(spacing: 20) {
-
                     overviewTitle
                     Divider()
+                    descriptionZStack
                     overviewLazyVGrid
 
                     additionalTitle
                     Divider()
                     additionalLazyVGrid
+
+                    websiteHStack
                 }
                 .padding()
             }
@@ -84,6 +89,33 @@ extension DetailView {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
+    private var descriptionZStack: some View {
+        ZStack {
+            if let coinDescription = vm.coinDescription,
+               !coinDescription.isEmpty {
+                VStack(alignment: .leading) {
+                    Text(coinDescription)
+                        .lineLimit(showFullDescription ? nil : 3)
+                        .font(.callout)
+                        .foregroundColor(Color.theme.accent)
+
+                    Button {
+                        withAnimation(.easeOut) {
+                            showFullDescription.toggle()
+                        }
+                    } label: {
+                        Text(showFullDescription ? "Less" : "Read more...")
+                            .font(.caption)
+                            .bold()
+                            .padding(.vertical, 4)
+                    }
+                    .tint(.blue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+
     private var overviewLazyVGrid: some View {
         LazyVGrid(columns: columns, alignment: .leading, spacing: spacing) {
             ForEach(vm.overviewStatistics) { stat in
@@ -106,5 +138,22 @@ extension DetailView {
                 StatisticView(stat: stat)
             }
         }
+    }
+
+    private var websiteHStack: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 40) {
+            if let homepage = vm.homepageURL, !homepage.isEmpty,
+               let url = URL(string: homepage) {
+                Link("Website", destination: url)
+            }
+
+            if let reddit = vm.redditURL, !reddit.isEmpty,
+               let url = URL(string: reddit) {
+                Link("Reddit", destination: url)
+            }
+        }
+        .tint(.blue)
+        .font(.headline)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
