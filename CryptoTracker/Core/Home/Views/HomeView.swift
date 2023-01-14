@@ -16,6 +16,8 @@ struct HomeView: View {
     @State private var selectedCoin: CoinModel? = nil
     @State private var showDetailView = false
 
+    @State private var showSettingsView = false
+
     var body: some View {
         ZStack {
             Color.theme.background
@@ -44,8 +46,6 @@ struct HomeView: View {
                     portfolioCoinsList
                         .transition(.move(edge: .trailing))
                 }
-
-                Spacer()
             }
             .background(
                 NavigationLink(
@@ -53,6 +53,9 @@ struct HomeView: View {
                     isActive: $showDetailView,
                     label: { EmptyView() })
             )
+            .sheet(isPresented: $showSettingsView) {
+                SettingsView()
+            }
         }
     }
 }
@@ -79,7 +82,11 @@ extension HomeView {
                     CircleButtonAnimationView(animate: $showPortfolio)
                 )
                 .onTapGesture {
-                    showPortfolioView.toggle()
+                    if showPortfolio {
+                        showPortfolioView.toggle()
+                    } else {
+                        showSettingsView.toggle()
+                    }
                 }
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live prices")
