@@ -43,9 +43,17 @@ struct HomeView: View {
                 }
 
                 if showPortfolio {
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
+                    ZStack(alignment: .top) {
+                        if vm.allPortfolios.isEmpty && vm.searchText.isEmpty {
+                            portfolioEmptyText
+                        } else {
+                            portfolioCoinsList
+                        }
+                    }
+                    .transition(.move(edge: .trailing))
                 }
+
+                Spacer(minLength: 0)
             }
             .background(
                 NavigationLink(
@@ -130,6 +138,15 @@ extension HomeView {
             }
         }
         .listStyle(.plain)
+    }
+
+    private var portfolioEmptyText: some View {
+        Text("You have not added any coins yet. Press plus button to get started!")
+            .font(.callout)
+            .foregroundColor(Color.theme.accent)
+            .fontWeight(.medium)
+            .multilineTextAlignment(.center)
+            .padding(50)
     }
 
     private func segue(coin: CoinModel) {
